@@ -1,25 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import "./styles.css";
+import { useState } from "react";
+import Modal from "./Modal.js";
 
-function App() {
+const NUM_OF_DOGS = 15;
+
+export default function App() {
+  const [modalOpen, setModalOpen] = useState(false);
+  // const [stateValue, setStateFn] = useState(initialValue);
+  const [modalSrc, setModalSrc] = useState(''); 
+
+  function handleModalOpen(event) {
+    setModalSrc(event.target.src);
+    setModalOpen(true);
+  }
+
+  function handleModalClose() {
+    // whatever code is put inside of here will be ran when the button is clicked
+    setModalOpen(false);
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="navBar">NavBar Placeholder</div>
+      {modalOpen && <Modal handleModalClose={handleModalClose} modalSrc={modalSrc} />
+      }
+      {[...new Array(NUM_OF_DOGS)].map((_, i) => {
+        const src = `https://place.dog/300/300/?${i}`;
+        return (
+          <img key={i} src={src} alt="pic of dog" onClick={handleModalOpen} className="images"/>
+        );
+      })}
+      
+      
     </div>
   );
 }
-
-export default App;
