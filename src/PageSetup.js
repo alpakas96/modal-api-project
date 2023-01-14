@@ -1,13 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import apiCall from './apiCall';
-
-function Poems() {
-  const [poemsArray, setPoemsArray] = useState([]);
-
-  useEffect(() => {
-    apiCall().then(data => setPoemsArray(data));
-  }, []);
-
+function Poems({poemsArray}) {
   return (
     <div className="Poems">
       {poemsArray.map((poem, i) => (
