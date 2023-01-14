@@ -1,4 +1,4 @@
-export default function Overlay({ modalOpen, handleModalClose, modalSrc }) {
+export default function Overlay({ modalOpen }) {
     return (
       <>
         {modalOpen && (

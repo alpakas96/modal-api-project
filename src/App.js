@@ -1,8 +1,7 @@
 import "./styles.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Modal from "./Modal.js";
-
-const NUM_OF_DOGS = 15;
+import apiCall from "./APIcall";
 
 export default function App() {
   const [modalOpen, setModalOpen] = useState(false);
@@ -10,7 +9,7 @@ export default function App() {
   const [modalSrc, setModalSrc] = useState(''); 
 
   function handleModalOpen(event) {
-    setModalSrc(event.target.src);
+    setModalSrc(event.target.key);
     setModalOpen(true);
   }
 
@@ -22,16 +21,9 @@ export default function App() {
   return (
     <div className="App">
       <div className="navBar">NavBar Placeholder</div>
-      {modalOpen && <Modal handleModalClose={handleModalClose} modalSrc={modalSrc} />
+      <Poems onClick={handleModalOpen}/>
+      {modalOpen && <Modal elementsToDisplay={modalSrc}handleModalClose={handleModalClose} />
       }
-      {[...new Array(NUM_OF_DOGS)].map((_, i) => {
-        const src = `https://place.dog/300/300/?${i}`;
-        return (
-          <img key={i} src={src} alt="pic of dog" onClick={handleModalOpen} className="images"/>
-        );
-      })}
-      
-      
     </div>
-  );
-}
+)};
+

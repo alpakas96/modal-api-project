@@ -1,8 +1,7 @@
-export default function Modal({handleModalClose, modalSrc }) {
+export default function Modal({ handleModalClose, elementsToDisplay }) {
   return (
         <div className="overlay">
-          <div className="openModal">
-            <img src={modalSrc} alt="d o g" /> 
+          <div className="openModal" dangerouslySetInnerHTML={elementsToDisplay}>
             <br></br>
             <button onClick={handleModalClose}> Close Modal </button>
           </div>
