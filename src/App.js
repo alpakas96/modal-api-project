@@ -7,7 +7,7 @@ import Poems from './PageSetup'
 export default function App() {
   const [modalOpen, setModalOpen] = useState(false);
   // const [stateValue, setStateFn] = useState(initialValue);
-  const [modalSrc, setModalSrc] = useState(''); 
+  const [poemIndex, setPoemIndex] = useState(''); 
 
   const [poemsArray, setPoemsArray] = useState([])
 
@@ -16,7 +16,7 @@ export default function App() {
   }, []);
 
   function handleModalOpen(event) {
-    setModalSrc(event.target.key);
+    setPoemIndex(event.currentTarget.dataset.index);
     setModalOpen(true);
   }
 
@@ -29,7 +29,7 @@ export default function App() {
     <div className="App">
       <div className="navBar">NavBar Placeholder</div>
       <Poems onClick={handleModalOpen} poemsArray={poemsArray}/>
-      {modalOpen && <Modal elementsToDisplay={modalSrc}handleModalClose={handleModalClose} />
+      {modalOpen && <Modal poem={poemsArray[poemIndex]} handleModalClose={handleModalClose} />
       }
     </div>
 )};

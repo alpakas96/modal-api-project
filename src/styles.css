@@ -9,8 +9,9 @@
   top: 50%;
   position: fixed; 
   transform: translate(-50%, -50%);
-  border: 30px; 
-  border-color: red;
+  background-color: rgba(0,0,0, 0.9);
+  color: antiquewhite;
+  padding: 0.5em; 
 }
 
 .images {
@@ -42,4 +43,6 @@
   color: aliceblue;
 
 }
+
+
 
