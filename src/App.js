@@ -2,7 +2,7 @@ import "./styles.css";
 import { useState, useEffect } from "react";
 import Modal from "./Modal.js";
 import apiCall from "./APIcall";
-import Poems from './PageSetup'
+import Poems from './Poems'
 
 export default function App() {
   const [modalOpen, setModalOpen] = useState(false);
@@ -10,10 +10,11 @@ export default function App() {
   const [poemIndex, setPoemIndex] = useState(''); 
 
   const [poemsArray, setPoemsArray] = useState([])
+  const [toggle, setToggle] = useState(false)
 
   useEffect(() => {
     apiCall().then(data => setPoemsArray(data));
-  }, []);
+  }, [toggle]);
 
   function handleModalOpen(event) {
     setPoemIndex(event.currentTarget.dataset.index);
@@ -29,7 +30,7 @@ export default function App() {
     <div className="App">
       <div className="navBar">NavBar Placeholder</div>
       <Poems onClick={handleModalOpen} poemsArray={poemsArray}/>
-      {modalOpen && <Modal poem={poemsArray[poemIndex]} handleModalClose={handleModalClose} />
+      {modalOpen && <Modal poem={poemsArray[poemIndex]} handleModalClose={handleModalClose} setToggle={setToggle} />
       }
     </div>
 )};

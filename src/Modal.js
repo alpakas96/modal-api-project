@@ -1,4 +1,13 @@
-export default function Modal({ handleModalClose, poem }) {
+import DeletePoem from "./DeletePoem"
+
+export default function Modal({ handleModalClose, poem, setToggle }) {
+
+  async function handleClick () {
+    await DeletePoem(poem._id)
+    setToggle(prev => !prev)
+    handleModalClose()
+  }
+
   return (
           <div className="openModal">
             <h2>{poem.title}</h2>
@@ -8,7 +17,9 @@ export default function Modal({ handleModalClose, poem }) {
                {line}
               </div>
             ))}
-            <button onClick={handleModalClose}> Close Modal </button>
+            <button onClick={handleModalClose}> Close Poem </button>
+            {/* create button with handleModalclose and delete function:  */}
+            <button onClick={handleClick}> Delete Poem </button>
           </div>
       )
 }
