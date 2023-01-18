@@ -10,6 +10,8 @@ export default function App() {
   const [poemIndex, setPoemIndex] = useState(''); 
 
   const [poemsArray, setPoemsArray] = useState([])
+
+  //the toggle enables us to fire the poems componenet again. somehow. 
   const [toggle, setToggle] = useState(false)
 
   useEffect(() => {

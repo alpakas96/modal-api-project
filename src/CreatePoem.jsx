@@ -7,7 +7,8 @@ export default function CreatePoem() {
     _id: "",
     title: "",
     author: "",
-    lines: []
+    lines: [''],
+    __v: 0
   });
 
   let navigate = useNavigate();
@@ -17,7 +18,7 @@ export default function CreatePoem() {
     await APIpost(poem);
 
     //does this line replace something or add something?:
-    navigate(`/characters/${character._id}`, { replace: true });
+    navigate(`https://poetry-api-production.up.railway.app/api/authors/${poem._id}`, { replace: true });
   };
 
   const handleChange = (e) => {
@@ -51,14 +52,14 @@ export default function CreatePoem() {
         <input
           type="text"
           placeholder="Please insert your Author"
-          name="role"
+          name="author"
           value={poem.author}
           onChange={handleChange}
         />
         <input
           type="text"
           placeholder="Please insert your Poem"
-          name="house"
+          name="lines"
           value={poem.lines}
           onChange={handleChange}
         />
